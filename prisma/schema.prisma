@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model ContactSubmission {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String?
+  service   String?
+  message   String
+  status    String   @default("NEW")
+  createdAt DateTime @default(now())
+}
+
+model JobApplication {
+  id                 Int      @id @default(autoincrement())
+  name               String
+  email              String
+  phone              String?
+  position           String
+  experience         String?
+  resumeOriginalName String
+  resumeStoredName   String
+  status             String   @default("NEW")
+  createdAt          DateTime @default(now())
+}

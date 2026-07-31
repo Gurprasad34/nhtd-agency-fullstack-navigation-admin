@@ -1,0 +1,1 @@
+import {NextResponse} from "next/server";import {cookies} from "next/headers";import {COOKIE_NAME} from "@/lib/auth";export async function POST(req:Request){const store=await cookies();store.delete(COOKIE_NAME);return NextResponse.redirect(new URL("/admin",req.url),303)}
